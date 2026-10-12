@@ -38,6 +38,6 @@ See `THIRD-PARTY-NOTICES.txt` distributed with the approved release. Not publish
 
 ## Current release
 
-Use [v0.2.1](https://github.com/kylefu8/copilot-usage-monitor-releases/releases/tag/v0.2.1). v0.2.0 was withdrawn due to a Windows startup crash. If 0.2.0 cannot start, download 0.2.1 manually; do not delete your settings or sign-in profile.
+Use [v0.2.2](https://github.com/kylefu8/copilot-usage-monitor-releases/releases/tag/v0.2.2). v0.2.2 fixes falsely incomplete usage for explicitly skipped accounts. Running v0.2.1 users can check, download, then confirm restart in Settings > Updates. v0.2.0 was withdrawn due to a startup crash; crashing users must download manually. Do not delete settings or sign-in data.
 
-当前使用 v0.2.1；v0.2.0 因 Windows 启动崩溃已撤下。如果旧版无法启动，请手动下载新 EXE，不需要删除配置或登录 profile。
+当前版本 v0.2.2 修复不适用账户造成的数据不完整误报。0.2.1 用户可在设置的更新页检查、下载并确认重启；无法启动的旧版需手动下载，不需要删除配置或登录数据。
