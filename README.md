@@ -35,3 +35,9 @@ Updates contact public GitHub release/asset servers and disclose ordinary reques
 ## Distribution notices
 
 See `THIRD-PARTY-NOTICES.txt` distributed with the approved release. Not publishing source here does not remove third-party license obligations; source-offer or attribution requirements, if any, must be met separately.
+
+## Current release
+
+Use [v0.2.1](https://github.com/kylefu8/copilot-usage-monitor-releases/releases/tag/v0.2.1). v0.2.0 was withdrawn due to a Windows startup crash. If 0.2.0 cannot start, download 0.2.1 manually; do not delete your settings or sign-in profile.
+
+当前使用 v0.2.1；v0.2.0 因 Windows 启动崩溃已撤下。如果旧版无法启动，请手动下载新 EXE，不需要删除配置或登录 profile。
