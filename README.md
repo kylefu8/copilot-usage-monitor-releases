@@ -48,6 +48,6 @@ See `THIRD-PARTY-NOTICES.txt` distributed with the approved release. Not publish
 
 ## Current release
 
-Use [v0.2.4](https://github.com/kylefu8/copilot-usage-monitor-releases/releases/tag/v0.2.4). The widget now adapts to content and display scale and preserves its compact position across expand/collapse. v0.2.3 and revised fixed-name v0.2.2 users can check, download and confirm restart in Settings > Updates. Original version-named v0.2.2 and older incompatible builds require a manual download once.
+Use [v0.2.5](https://github.com/kylefu8/copilot-usage-monitor-releases/releases/tag/v0.2.5). This follow-up widget fix verifies actual viewport width/height and corrects external resizing and fractional-scale rounding. v0.2.4, v0.2.3 and revised fixed-name v0.2.2 can check, download and confirm restart in Settings > Updates. Original version-named v0.2.2 and older incompatible builds require one manual download. Actual mixed-DPI movement and affected-device acceptance remain unverified.
 
-当前版本 0.2.4：修复悬浮窗在较大字号和缩放下的裁切，并保留展开/收起位置。0.2.3 与修订后的固定名 0.2.2 可在更新页检查、下载并确认重启；旧不兼容版本需手动下载一次。真实混合 DPI 跨屏仍需目标设备验收。
+当前版本 0.2.5：后续修复悬浮窗宽高裁切，核对实际视口并纠正外部缩小与分数缩放取整误差。0.2.4、0.2.3 与修订后的固定名 0.2.2 可在更新页检查、下载并确认重启；旧不兼容版本需手动下载一次。真实混合 DPI 跨屏与受影响电脑仍需验收。
