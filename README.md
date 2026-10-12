@@ -10,6 +10,11 @@ Revised builds use the fixed x64 filename `Copilot.Usage.Monitor.exe`. Download 
 
 This repository distributes binaries and documentation only. It does not contain application source code. The [source repository](https://github.com/mcaps-microsoft/copilot-usage-monitor) is **MS Internal Only** and requires company SSO and repository access.
 
+From v0.2.3, normal startup adds `Copilot Usage Monitor` to the current user's
+Start menu/All apps, pointing to the running EXE. No administrator rights or
+autostart change. After moving the EXE, run it once from the new location.
+The app shows GitHub Copilot usage only; use My AI Spend for overall AI spend.
+
 **Public download is not public access to internal services.** Consumption monitoring and [My AI Spend](https://aka.ms/MyAISpend) are MS Internal Only; they require an eligible Microsoft internal account and the service's own permissions. A normal personal GitHub account is not sufficient. My AI Spend is linked only, not read or merged into this app's GitHub-only total.
 
 ## Updates
@@ -43,6 +48,6 @@ See `THIRD-PARTY-NOTICES.txt` distributed with the approved release. Not publish
 
 ## Current release
 
-Use [v0.2.2](https://github.com/kylefu8/copilot-usage-monitor-releases/releases/tag/v0.2.2), revised with the fixed filename Copilot.Usage.Monitor.exe. Previously downloaded 0.2.1/original 0.2.2 require manual migration once. v0.2.0 and v0.2.1 releases were withdrawn.
+Use [v0.2.3](https://github.com/kylefu8/copilot-usage-monitor-releases/releases/tag/v0.2.3). Revised fixed-name v0.2.2 users can use Settings > Updates to check, download, then confirm restart. Start menu registration happens after v0.2.3 starts. Old withdrawn 0.2.1/original version-named 0.2.2 require manual migration.
 
-当前 0.2.2 已修订为固定文件名。已下载旧 0.2.1/原 0.2.2 的用户需要手动下载一次；0.2.0 和 0.2.1 已撤下。
+当前版本 0.2.3：固定名修订版 0.2.2 可在更新页检查、下载并确认重启。新版启动后自动建立开始菜单入口，并明确 GitHub Copilot 与整体 AI 花费的范围。旧 0.2.1/原带版本号 0.2.2 需手动下载一次。
