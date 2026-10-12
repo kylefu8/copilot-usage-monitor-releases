@@ -6,7 +6,7 @@ Made with a red heart by CSS SCIM Mooncake. This is a team-developed utility, no
 
 ## Download and run
 
-Download the x64 `*-portable.exe` from [Releases](https://github.com/kylefu8/copilot-usage-monitor-releases/releases) into a stable, user-writable folder and run it. Windows 10/11 and Microsoft Edge WebView2 Runtime are required. This is not an ARM64 build. There is no MSI/NSIS installer and no silent runtime installation.
+Revised builds use the fixed x64 filename `Copilot.Usage.Monitor.exe`. Download it from [Releases](https://github.com/kylefu8/copilot-usage-monitor-releases/releases) into a stable, user-writable folder and run it. Historical releases retain versioned names; use the release notes and About for the actual version. Windows 10/11 and Microsoft Edge WebView2 Runtime are required. This is not an ARM64 build. There is no MSI/NSIS installer and no silent runtime installation.
 
 This repository distributes binaries and documentation only. It does not contain application source code. The [source repository](https://github.com/mcaps-microsoft/copilot-usage-monitor) is **MS Internal Only** and requires company SSO and repository access.
 
@@ -17,6 +17,11 @@ This repository distributes binaries and documentation only. It does not contain
 Update-enabled builds check the public signed manifest after startup and every six hours. GitHub sign-in, an App client ID and a personal access token are not required. Checks never automatically download an EXE. Choose **Download update**, wait for signature/integrity verification, then confirm **Restart and update**. The app never forces an upgrade or restart. **Check for updates** and the Release page remain available; active checks/downloads can be canceled.
 
 The update signature is Ed25519, not Windows Authenticode. Check each release's Windows signing status. SmartScreen, WDAC or AppLocker may still prompt or block the EXE; do not disable company security controls.
+
+The originally published v0.2.1/v0.2.2 clients accept only versioned update asset
+names. They cannot update to a fixed-name-only release without a compatible bridge
+release or manual download. Revised clients accept both naming formats. Updates
+still preserve the current local EXE path/name, including an old versioned name.
 
 Version 0.1.9 and earlier require one manual upgrade to the first configured public-update build. Quit the old copy first. Old installer-managed copies must migrate manually to a portable copy; if the EXE location changes, turn autostart off/on in the new copy to register its new path. Settings/profile identity remains `com.microsoft.copilot-usage-monitor`.
 
@@ -38,6 +43,6 @@ See `THIRD-PARTY-NOTICES.txt` distributed with the approved release. Not publish
 
 ## Current release
 
-Use [v0.2.2](https://github.com/kylefu8/copilot-usage-monitor-releases/releases/tag/v0.2.2). v0.2.2 fixes falsely incomplete usage for explicitly skipped accounts. Running v0.2.1 users can check, download, then confirm restart in Settings > Updates. v0.2.0 was withdrawn due to a startup crash; crashing users must download manually. Do not delete settings or sign-in data.
+Use [v0.2.2](https://github.com/kylefu8/copilot-usage-monitor-releases/releases/tag/v0.2.2), revised with the fixed filename Copilot.Usage.Monitor.exe. Previously downloaded 0.2.1/original 0.2.2 require manual migration once. v0.2.0 and v0.2.1 releases were withdrawn.
 
-当前版本 v0.2.2 修复不适用账户造成的数据不完整误报。0.2.1 用户可在设置的更新页检查、下载并确认重启；无法启动的旧版需手动下载，不需要删除配置或登录数据。
+当前 0.2.2 已修订为固定文件名。已下载旧 0.2.1/原 0.2.2 的用户需要手动下载一次；0.2.0 和 0.2.1 已撤下。
