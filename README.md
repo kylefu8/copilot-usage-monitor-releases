@@ -1,8 +1,32 @@
-# Copilot Usage Monitor
+# Copilot and Azure Usage Monitor
 
-Windows tray monitor for GitHub Copilot enterprise consumption, with English/Chinese UI, a desktop widget and usage reminders.
+Windows tray monitor for GitHub Copilot enterprise consumption and optional Public Azure subscription costs. English/Chinese UI, a dual-source desktop widget, independent budgets and reminders. Azure is off by default.
 
 Made with a red heart by CSS SCIM Mooncake. This is a team-developed utility, not an official Microsoft, GitHub or OpenAI product or a support commitment.
+
+## Screenshots
+
+| GitHub Copilot · English | GitHub Copilot · 中文 |
+| --- | --- |
+| <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/main-panel.png" alt="English GitHub Copilot panel" width="380"> | <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/main-panel-zh.png" alt="中文 GitHub Copilot 面板" width="380"> |
+
+| Compact dual-source widget | Expanded dual-source widget |
+| --- | --- |
+| <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/widget-compact.png" alt="Copilot and Azure compact widget" width="240"> | <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/widget-expanded.png" alt="Copilot and Azure expanded widget" width="240"> |
+
+| Azure subscription costs | Azure settings |
+| --- | --- |
+| <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/azure-panel.png" alt="Azure costs with separate USD and EUR budgets" width="380"> | <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/azure-settings.png" alt="Optional Azure monitoring and subscription settings" width="380"> |
+
+| GitHub Copilot settings | Updates & About |
+| --- | --- |
+| <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/settings.png" alt="GitHub Copilot settings and authentication actions" width="380"> | <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/updates-about.png" alt="Version 0.3.0 updates, about and privacy" width="380"> |
+
+Screenshots use the v0.3.0 frontend and synthetic data only: four Copilot accounts,
+a **USD 10,000 monthly limit per account**, a $855 Copilot total, and two Azure
+subscriptions showing USD 84 and EUR 125 separately. Actual Copilot limits come
+from the service; Azure budgets are user-defined, not Azure Budget resources.
+No real employee, profile or billing data appears.
 
 ## Download and run
 
@@ -13,9 +37,25 @@ This repository distributes binaries and documentation only. It does not contain
 From v0.2.3, normal startup adds `Copilot Usage Monitor` to the current user's
 Start menu/All apps, pointing to the running EXE. No administrator rights or
 autostart change. After moving the EXE, run it once from the new location.
-The app shows GitHub Copilot usage only; use My AI Spend for overall AI spend.
+The Copilot total shows GitHub usage only; Azure costs remain separate. My AI Spend is linked for overall AI spend.
 
 **Public download is not public access to internal services.** Consumption monitoring and [My AI Spend](https://aka.ms/MyAISpend) are MS Internal Only; they require an eligible Microsoft internal account and the service's own permissions. A normal personal GitHub account is not sufficient. My AI Spend is linked only, not read or merged into this app's GitHub-only total.
+
+## Optional Azure monitoring
+
+Install Azure CLI for Windows and configure the required profiles using the
+`az-profile-switch` (azure-profile-switch) skill under `~/.azure-profiles/`.
+Enable Settings > Azure, check the environment, select subscriptions and save.
+Missing CLI/profile/permissions show setup diagnostics, not zero cost. Only Public
+Azure is supported; China and confirmed invalid profiles are not displayed.
+
+The widget shows both sources; the main panel has source tabs. Posted Azure
+Actual Cost is not a real-time balance or final invoice. Subscriptions keep their
+own reporting period, currency and local budget/amount reminder; no conversion or
+sum with Copilot. Disable Azure to stop queries/alerts without deleting configuration.
+No account configuration, login or cache-clearing UI is provided. Azure access
+requires the selected CLI identity's own subscription/cost permissions, independent
+of the internal Copilot service.
 
 ## Updates
 
@@ -32,7 +72,9 @@ Version 0.1.9 and earlier require one manual upgrade to the first configured pub
 
 ## Privacy
 
-Usage remains in application memory; the app does not upload observed usage or install telemetry/disk logging. Preferences, an optional company UPN for sign-in hints, the signed-out choice, widget position and monthly reminder keys are local. Monthly keys may contain the minimum account identity needed to deduplicate alerts. WebView2 retains sign-in cookies and may keep its own cache/history; the original site's authentication and network behavior still apply.
+Copilot usage and Azure costs remain in application memory; the app does not upload observed usage or install telemetry/disk logging. Preferences, an optional company UPN for sign-in hints, the signed-out choice, widget position and monthly reminder keys are local. Monthly keys may contain the minimum account identity needed to deduplicate alerts. WebView2 retains sign-in cookies and may keep its own cache/history; the original site's authentication and network behavior still apply.
+
+Azure profile references, subscriptions, budgets and reminder rules are local. Authentication is managed by Azure CLI. Every CLI child gets an explicit `AZURE_CONFIG_DIR`; the app does not copy credentials, automatically log in, clear caches or change external default subscriptions/clouds. CLI, Windows and WebView2 may write their own caches/diagnostics.
 
 Updates contact public GitHub release/asset servers and disclose ordinary request metadata such as IP address and user agent. No GitHub update token is used, and internal sign-in cookies or usage are not sent to the updater. Update staging/job metadata and backups are local. No developer signing private key or shared credential is distributed.
 
@@ -42,12 +84,12 @@ Updates contact public GitHub release/asset servers and disclose ordinary reques
 
 配置好签名公钥的版本会在启动后及每 6 小时匿名检查新版，无需 GitHub 授权或更新开关。只有用户选择后才下载 EXE，验签通过并确认重启后才升级。0.1.9 及更早版本需手动升级一次。程序保留 CSS SCIM Mooncake 团队署名，但不是官方产品或支持承诺。
 
+Azure 默认关闭。需安装 Azure CLI，通过 `az-profile-switch` skill 配置需要查询的 profile，
+然后在「Azure」页启用、选择订阅并保存。仅支持 Public Azure，不支持 Azure China。
+费用按各订阅周期和币种单独显示，不与 Copilot 相加；Actual Cost 有入账延迟。
+账号与认证由 CLI 管理，应用不复制凭据、不自动登录或清除缓存、不修改外部默认订阅或云。
+Azure 权限与微软内部 Copilot 服务权限相互独立。
+
 ## Distribution notices
 
 See `THIRD-PARTY-NOTICES.txt` distributed with the approved release. Not publishing source here does not remove third-party license obligations; source-offer or attribution requirements, if any, must be met separately.
-
-## Current release
-
-Use [v0.2.5](https://github.com/kylefu8/copilot-usage-monitor-releases/releases/tag/v0.2.5). This follow-up widget fix verifies actual viewport width/height and corrects external resizing and fractional-scale rounding. v0.2.4, v0.2.3 and revised fixed-name v0.2.2 can check, download and confirm restart in Settings > Updates. Original version-named v0.2.2 and older incompatible builds require one manual download. Actual mixed-DPI movement and affected-device acceptance remain unverified.
-
-当前版本 0.2.5：后续修复悬浮窗宽高裁切，核对实际视口并纠正外部缩小与分数缩放取整误差。0.2.4、0.2.3 与修订后的固定名 0.2.2 可在更新页检查、下载并确认重启；旧不兼容版本需手动下载一次。真实混合 DPI 跨屏与受影响电脑仍需验收。
