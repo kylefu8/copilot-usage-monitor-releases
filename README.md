@@ -2,20 +2,25 @@
 
 Windows tray monitor for GitHub Copilot enterprise consumption and optional Public Azure subscription costs. English/Chinese UI, a dual-source desktop widget, independent budgets and reminders. Azure is off by default.
 
+**New users:** [Complete English setup guide](docs/getting-started.md) ·
+[Self-contained Azure Bootstrap prompt](docs/azure-setup-bootstrap.md) ·
+[Optional Azure profile skill (English / 中文)](skills/README.md) ·
+[Second-PC verification checklist](docs/verify-on-another-pc.md)
+
 Made with a red heart by CSS SCIM Mooncake. This is a team-developed utility, not an official Microsoft, GitHub or OpenAI product or a support commitment.
 
-## Current release: v0.3.1
+## Current release: v0.3.2
 
 [Download the latest portable EXE or ZIP](https://github.com/kylefu8/copilot-usage-monitor-releases/releases/latest).
-This release fixes title-bar drag hiding and widget bouncing, adds light/dark
-purple modes, unifies source refresh, and improves Azure subscription layout.
-Azure refresh keeps previous costs visible and publishes amounts before service
-details with up to two workers; the same CLI profile stays serial. Failed retained
-costs never trigger new alerts. Initial profile discovery remains serial.
+This release adds a complete offline Azure setup prompt in Settings. Run it in
+Copilot CLI, Agency, Codex or another trusted local command-capable agent, or use
+the standalone English/Chinese profile skills. Includes a Global setup guide,
+manual setup, second-PC checks and an optional test cleanup prompt. Installation
+and sign-in need approval; the app never runs setup commands.
 
-新版修复拖动消失和悬浮窗跳动，支持浅紫/深紫，统一刷新按钮并优化 Azure 布局。
-刷新保留上次费用，先更新金额后补明细，最多两路读取、同一 profile 串行；
-旧费用不触发新提醒。首次 profile 发现仍串行，未实测真实 Azure 提速幅度。
+新版新增 Azure 完整配置 Prompt，可复制到 Copilot CLI、Agency、Codex 等本机
+Agent 执行；也可使用中英文独立 Skill。补齐英文上手、手动配置、第二台机器
+验证和测试清理说明。安装与登录逐项确认，应用本身不执行配置命令。
 
 ## Screenshots
 
@@ -31,15 +36,20 @@ costs never trigger new alerts. Initial profile discovery remains serial.
 | --- | --- |
 | <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/azure-panel.png" alt="Azure costs with separate USD and EUR budgets" width="380"> | <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/azure-settings.png" alt="Optional Azure monitoring and subscription settings" width="380"> |
 
+| Azure setup · 中文 | Offline prompt and standalone skills |
+| --- | --- |
+| <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/azure-settings-zh.png" alt="Chinese Azure setup prompt and bilingual skill paths" width="380"> | Copy the complete prompt into Copilot CLI, Agency or Codex with local commands enabled. Or use the independent English/Chinese skills at the paths shown in Settings. |
+
 | GitHub Copilot settings | Updates & About |
 | --- | --- |
-| <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/settings.png" alt="GitHub Copilot settings and authentication actions" width="380"> | <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/updates-about.png" alt="Version 0.3.1 updates, about and privacy" width="380"> |
+| <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/settings.png" alt="GitHub Copilot settings and authentication actions" width="380"> | <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/updates-about.png" alt="Version 0.3.2 updates, about and privacy" width="380"> |
 
 | Dark purple mode | Azure refresh keeps previous costs |
 | --- | --- |
 | <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/azure-panel-dark.png" alt="Dark purple Azure panel" width="380"> | <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/widget-reading.png" alt="Widget retains Azure costs while reading" width="240"> |
 
-Screenshots use the v0.3.1 frontend and synthetic data only: four Copilot accounts,
+Azure setup and Updates & About screenshots show v0.3.2; unchanged monitoring
+views were captured with v0.3.1. All use synthetic data only: four Copilot accounts,
 a **USD 10,000 monthly limit per account**, a $855 Copilot total, and two Azure
 subscriptions showing USD 84 and EUR 125 separately. Actual Copilot limits come
 from the service; Azure budgets are user-defined, not Azure Budget resources.
@@ -60,8 +70,22 @@ The Copilot total shows GitHub usage only; Azure costs remain separate. My AI Sp
 
 ## Optional Azure monitoring
 
-Install Azure CLI for Windows and configure the required profiles using the
-`az-profile-switch` (azure-profile-switch) skill under `~/.azure-profiles/`.
+First-time setup or repair can use the complete
+[Azure Setup Bootstrap prompt](docs/azure-setup-bootstrap.md) in your trusted
+local coding assistant. It embeds the English skill and Windows reference, so no
+preinstalled skill/source-repo access is required. It asks before installation
+and sign-in and preserves existing profiles. Version 0.3.2 offers Settings >
+Azure > Copy setup prompt. Paste the complete prompt into Copilot CLI, Agency,
+Codex or another trusted local command-capable agent. The app only copies text,
+never executes setup commands. Settings also lists the standalone skill paths.
+
+Install Azure CLI for Windows and prepare profiles under `~/.azure-profiles/`,
+or use an existing valid `~/.azure` profile. The
+[English guide](docs/getting-started.md) provides manual PowerShell setup and an
+[optional standalone `az-profile-switch` skill (English / 中文)](skills/README.md).
+You can use the skill directly to add profiles instead of the full Bootstrap.
+No AI agent or
+skill is required to run the app. Sign in fresh on each PC; never copy credentials.
 Enable Settings > Azure, check the environment, select subscriptions and save.
 Missing CLI/profile/permissions show setup diagnostics, not zero cost. Only Public
 Azure is supported; China and confirmed invalid profiles are not displayed.
@@ -101,7 +125,7 @@ Updates contact public GitHub release/asset servers and disclose ordinary reques
 
 配置好签名公钥的版本会在启动后及每 6 小时匿名检查新版，无需 GitHub 授权或更新开关。只有用户选择后才下载 EXE，验签通过并确认重启后才升级。0.1.9 及更早版本需手动升级一次。程序保留 CSS SCIM Mooncake 团队署名，但不是官方产品或支持承诺。
 
-Azure 默认关闭。需安装 Azure CLI，通过 `az-profile-switch` skill 配置需要查询的 profile，
+Azure 默认关闭。需安装 Azure CLI，按英文指南手动配置或通过可选的 `az-profile-switch` skill 配置 profile，
 然后在「Azure」页启用、选择订阅并保存。仅支持 Public Azure，不支持 Azure China。
 费用按各订阅周期和币种单独显示，不与 Copilot 相加；Actual Cost 有入账延迟。
 账号与认证由 CLI 管理，应用不复制凭据、不自动登录或清除缓存、不修改外部默认订阅或云。
