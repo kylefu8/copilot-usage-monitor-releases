@@ -4,6 +4,19 @@ Windows tray monitor for GitHub Copilot enterprise consumption and optional Publ
 
 Made with a red heart by CSS SCIM Mooncake. This is a team-developed utility, not an official Microsoft, GitHub or OpenAI product or a support commitment.
 
+## Current release: v0.3.1
+
+[Download the latest portable EXE or ZIP](https://github.com/kylefu8/copilot-usage-monitor-releases/releases/latest).
+This release fixes title-bar drag hiding and widget bouncing, adds light/dark
+purple modes, unifies source refresh, and improves Azure subscription layout.
+Azure refresh keeps previous costs visible and publishes amounts before service
+details with up to two workers; the same CLI profile stays serial. Failed retained
+costs never trigger new alerts. Initial profile discovery remains serial.
+
+新版修复拖动消失和悬浮窗跳动，支持浅紫/深紫，统一刷新按钮并优化 Azure 布局。
+刷新保留上次费用，先更新金额后补明细，最多两路读取、同一 profile 串行；
+旧费用不触发新提醒。首次 profile 发现仍串行，未实测真实 Azure 提速幅度。
+
 ## Screenshots
 
 | GitHub Copilot · English | GitHub Copilot · 中文 |
@@ -20,9 +33,13 @@ Made with a red heart by CSS SCIM Mooncake. This is a team-developed utility, no
 
 | GitHub Copilot settings | Updates & About |
 | --- | --- |
-| <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/settings.png" alt="GitHub Copilot settings and authentication actions" width="380"> | <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/updates-about.png" alt="Version 0.3.0 updates, about and privacy" width="380"> |
+| <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/settings.png" alt="GitHub Copilot settings and authentication actions" width="380"> | <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/updates-about.png" alt="Version 0.3.1 updates, about and privacy" width="380"> |
 
-Screenshots use the v0.3.0 frontend and synthetic data only: four Copilot accounts,
+| Dark purple mode | Azure refresh keeps previous costs |
+| --- | --- |
+| <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/azure-panel-dark.png" alt="Dark purple Azure panel" width="380"> | <img src="https://raw.githubusercontent.com/kylefu8/copilot-usage-monitor-releases/main/docs/screenshots/widget-reading.png" alt="Widget retains Azure costs while reading" width="240"> |
+
+Screenshots use the v0.3.1 frontend and synthetic data only: four Copilot accounts,
 a **USD 10,000 monthly limit per account**, a $855 Copilot total, and two Azure
 subscriptions showing USD 84 and EUR 125 separately. Actual Copilot limits come
 from the service; Azure budgets are user-defined, not Azure Budget resources.
